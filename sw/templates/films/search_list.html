@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+Lista de peliculas
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <div id="films" class="list-group borderless overflow-auto">
+            {% for f in films %}
+                <a href="{% url 'film' id=f.id %}" class="list-group-item list-group-item-action">
+                <img src="{% get_static_prefix %}media/images/films/{{ f.id }}.jpg" alt="{{f.title}}" style="width:15%"  class="img-fluid rounded pull-left mr-4">
+                <h2>{{ f.title }} </h2>
+                {{ f.release_date}}
+                </a>
+            {% empty %}
+                <div id="film" align="center">
+                    <h1>Resultado no encontrado </h1>
+                </div>
+            {% endfor %} 
+        </div>
+    </div>
+{% endblock %}

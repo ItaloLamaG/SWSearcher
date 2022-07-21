@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load image_exists from sw_extras  %}
+
+
+{% block title %}
+Naves estelares
+{% endblock %}
+
+{% block content %}
+
+<div class="container">
+    <div id="films" class="list-group borderless overflow-auto">
+        {% for f in starships %}
+            <a href="/starships/{{ f.id }}" class="list-group-item list-group-item-action">
+            {% if f.id|image_exists:"starships/" %}
+                <img src="{% get_static_prefix %}media/images/starships/{{ f.id }}.jpg" alt="{{f.name}}" style="width: 15%;" class="img-fluid rounded pull-left mr-4">
+            {% else %}
+                <div class="img-fluid rounded pull-left mr-4" style="width: 15%;">
+                    <i class="swg swg-falcon swg-6x"></i>
+                </div>
+            {% endif %}
+            <h2>{{ f.name }} </h2>
+            </a>
+        {% endfor %}    
+    </div>
+</div>
+    
+{% endblock %}

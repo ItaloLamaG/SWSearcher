@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block title %}
+Especies
+{% endblock %}
+
+{% block content %}
+
+<div class="container">
+    <div id="films" class="list-group borderless overflow-auto">
+        {% for f in species %}
+            <a href="/species/{{ f.id }}" class="list-group-item list-group-item-action">
+            <img src="{% get_static_prefix %}media/images/species/{{ f.id }}.jpg" alt="{{f.name}}" style="width:15%"  class="img-fluid rounded pull-left mr-4">
+            <h2>{{ f.name }} </h2>
+            </a>
+        {% endfor %}    
+    </div>
+</div>
+    
+{% endblock %}

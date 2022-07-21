@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load image_exists from sw_extras  %}
+
+
+{% block title %}
+Planetas
+{% endblock %}
+
+{% block content %}
+
+    <div id="film">
+        {% if planet.id|image_exists:"planets/" %}
+            <img src="{% get_static_prefix %}media/images/planets/{{ planet.id }}.jpg" alt="{{planet.name}}" style="width: 50%;" class="img-fluid rounded pull-left mr-4">
+        {% else %}
+            <div class="img-fluid rounded pull-left mr-4" style="width: 20%;">
+                <i class="swg swg-deathstar swg-6x"></i>
+            </div>
+        {% endif %}
+        <h1> {{ planet.name }} </h1>
+        <table style="border-collapse: separate; border-spacing: 10px;">
+            <tr>
+                <th> Rotation period </th>
+                <th>{{ planet.rotation_period }}</th>
+            </tr>
+            <tr>
+                <th> Orbital period </th>
+                <th>{{ planet.orbital_period }}</th>
+            </tr>
+            <tr>
+                <th> Diameter </th>
+                <th>{{ planet.diameter }}</th>
+            </tr>
+            <tr>
+                <th> Climate </th>
+                <th>{{ planet.climate }}</th>
+            </tr>
+            <tr>
+                <th> Gravity </th>
+                <th>{{ planet.gravity }}</th>
+            </tr>
+            <tr>
+                <th> Terrain </th>
+                <th>{{ planet.terrain }}</th>
+            </tr>
+            <tr>
+                <th> Population </th>
+                <th>{{ planet.population }}</th>
+            </tr>
+            <tr>
+                <th> Surface water </th>
+                <th>{{ planet.surface_water }}</th>
+            </tr>
+        </table>
+    </div>
+
+{% endblock %}

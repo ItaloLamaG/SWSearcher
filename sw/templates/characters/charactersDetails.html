@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block title %}
+Personajes
+{% endblock %}
+
+{% block content %}
+
+    <div id="film">
+        <img src="{% get_static_prefix %}media/images/people/{{ charac.id }}.jpg" alt="{{charac.name}}"  class="img-fluid rounded pull-left mr-4">
+        <h1> {{ charac.name }} </h1>
+        <table style="border-collapse: separate; border-spacing: 10px;">
+            <tr>
+                <th> Altura </th>
+                <th>{{ charac.height }}</th>
+            </tr>
+            <tr>
+                <th> Mass </th>
+                <th>{{ charac.mass }}</th>
+            </tr>
+            <tr>
+                <th> Color de Pelo </th>
+                <th>{{ charac.hair_color }}</th>
+            </tr>
+            <tr>
+                <th> Color de Piel </th>
+                <th>{{ charac.skin_color }}</th>
+            </tr>
+            <tr>
+                <th> Color de ojos </th>
+                <th>{{ charac.eye_color }}</th>
+            </tr>
+            <tr>
+                <th> A&ntilde;o de nacimiento </th>
+                <th>{{ charac.birth_year }}</th>
+            </tr>
+            <tr>
+                <th> Genero </th>
+                <th>{{ charac.gender }}</th>
+            </tr>
+            <tr>
+                <th> Planeta </th>
+                <th>
+                    <a href="/planets/{{ charac.homeworld.id }}" style="color: lightgreen">
+                        {{ charac.homeworld.name }}
+                    </a>
+                </th>
+            </tr>
+        </table>
+    </div>
+
+{% endblock %}

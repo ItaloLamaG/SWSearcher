@@ -1,0 +1,87 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load image_exists from sw_extras  %}
+
+
+{% block title %}
+Naves estelares
+{% endblock %}
+
+{% block content %}
+
+    <div id="film">
+        {% if starship.id|image_exists:"starships/" %}
+            <img src="{% get_static_prefix %}media/images/starships/{{ starship.id }}.jpg" alt="{{starship.name}}" style="width: 50%;" class="img-fluid rounded pull-left mr-4">
+        {% else %}
+            <div class="img-fluid rounded pull-left mr-4" style="width: 20%;">
+                <i class="swg swg-falcon swg-6x"></i>
+            </div>
+        {% endif %}
+        <h1> {{ starship.name }} </h1>
+        <table style="border-collapse: separate; border-spacing: 10px;">
+            <tr>
+                <th> Modelo </th>
+                <th>{{ starship.model }}</th>
+            </tr>
+            <tr>
+                <th> Fabricante </th>
+                <th>{{ starship.manufacturer }}</th>
+            </tr>
+            <tr>
+                <th> Valor en creditos </th>
+                <th>{{ starship.cost_in_credits }}</th>
+            </tr>
+            <tr>
+                <th> Largo </th>
+                <th>{{ starship.length }}</th>
+            </tr>
+            <tr>
+                <th> Maxima velocidad atmosferica </th>
+                <th>{{ starship.max_atmosphering_speed }}</th>
+            </tr>
+            <tr>
+                <th> Tripulacion </th>
+                <th>{{ starship.crew }}</th>
+            </tr>
+            <tr>
+                <th> Pasajeros </th>
+                <th>{{ starship.passengers }}</th>
+            </tr>
+            <tr>
+                <th> Capacidad de cargamento </th>
+                <th>{{ starship.cargo_capacity }}</th>
+            </tr>
+            <tr>
+                <th> Consumibles </th>
+                <th>{{ starship.consumables }}</th>
+            </tr>
+            {% comment %} Nave estelar {% endcomment %}
+            <tr>
+                <th> Clasificacion de hiperimpulsor </th>
+                <th>{{ starship.hyperdrive_rating }}</th>
+            </tr>
+            <tr>
+                <th> MGLT </th>
+                <th>{{ starship.MGLT }}</th>
+            </tr>
+            <tr>
+                <th> Clase de Nave Estelar </th>
+                <th>{{ starship.starship_class }}</th>
+            </tr>
+            <th> Pilotos </th>
+                <th>
+                    {% for p in starship.pilots.all %}
+                        <a href="/characters/{{ p.id }}" style="color: lightgreen">
+                            {{ p.name }}
+                        </a>
+                    {% empty %}
+                        Sin pilotos
+                    {% endfor %}
+                    
+                </th>
+            </tr>
+              
+        </table>
+    </div>
+
+{% endblock %}

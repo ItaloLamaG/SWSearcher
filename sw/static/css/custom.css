@@ -1,0 +1,52 @@
+@font-face {
+    font-family: 'Starjedi';
+    src: url('../fonts/Starjedi.ttf');
+    font-weight: normal;
+    font-style: normal;
+}
+
+.list-group-item {
+    background-color: transparent;
+    border-top: None;
+    color: #fff;
+}
+
+.list-group {
+    max-height: 625px;
+    margin-bottom: 10px;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none
+}
+
+.list-group::-webkit-scrollbar {
+    display: none;
+}
+
+.carousel-control-next,
+.carousel-control-prev {
+    top: 20%;
+    bottom: 20%;
+}
+
+.table {
+    border-radius: 5px;
+    width: 50%;
+    margin: 0px auto;
+    float: none;
+}
+
+#film>h1,
+#films h2 {
+    font-family: 'Starjedi';
+}
+
+html {
+    font-family: 'Open Sans';
+}
+
+
+.breadcums-section {
+    background-color: rgba(0, 0, 0, 0.25);
+    height: 300px;
+    border-radius: 15px;
+}
